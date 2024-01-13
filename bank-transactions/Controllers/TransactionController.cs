@@ -43,9 +43,9 @@ namespace bank_transactions.Controllers
         }
 
         // GET: Transaction/Create
-        public IActionResult Create()
+        public IActionResult AddOrEdit()
         {
-            return View();
+            return View(new Transaction());
         }
 
         // POST: Transaction/Create
