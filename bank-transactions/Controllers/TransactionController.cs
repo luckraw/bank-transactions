@@ -60,8 +60,13 @@ namespace bank_transactions.Controllers
         {
             if (ModelState.IsValid)
             {
-                transaction.Date = DateTime.Now;
-                _context.Add(transaction);
+                if (transaction.Id == 0)
+                {
+                    transaction.Date = DateTime.Now;
+                    _context.Add(transaction);
+                }
+                else
+                    _context.Update(transaction);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
